@@ -33,7 +33,6 @@ function refresh() {
 }
 
 
-
 function DisneyAPI() {
     const characterName = document.getElementById("cname").value;
     if (characterName) {
@@ -62,9 +61,6 @@ function DisneyAPI() {
                 //                             </div>
                 //                            </div>`;
 
-
-
-
                 characterCard.innerHTML = `<div class="col">
                                                 <div class="card border-0">
                                                     <img src="${character.imageUrl}" class="card-img-top post-image" alt="${character.name}">
@@ -75,21 +71,9 @@ function DisneyAPI() {
                                                 </div>
                                             </div>`
                                       
-
-
-
-
-
-
-
-
-
-
                 cardContainer.appendChild(characterCard);
+                scrolled.style.display = "block"
             });
-
-
-
         } else {
             cardContainer.innerHTML = `<p>No character found with that name. Please try again.</p>`;
         }
@@ -111,11 +95,6 @@ function showDetails(id) {
     localStorage.setItem("characterId", cid);
     window.location.href = "../detail.html";
 }
-
-
-
-
-
 
 
 
@@ -153,3 +132,18 @@ function showDetails(id) {
 
 
 //   <p>Films: ${character.films.join(", ")}</p>
+
+
+const scrolled = document.getElementById('navbar-scrolled');
+scrolled.style.display = "none"
+
+document.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            scrolled.style.display = "block"
+        } else {
+            scrolled.style.display = "none"
+        }
+    });
+    
+});

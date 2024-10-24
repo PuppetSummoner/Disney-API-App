@@ -5,13 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dtset</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body {
+      font-family: "Archivo", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      background-color: #fdfdfd;
+      color: #0D0D0D;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Scrolled Nav bar -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top"  id="navbar-scrolled">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top px-5"  id="navbar-scrolled">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -28,10 +42,6 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="cname1">
-            <button class="btn btn-outline-success" type="submit" id="search-btn2">Search</button>
-          </form>
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" href="./detail.html">Detail</a>
@@ -43,24 +53,31 @@
         </div>
       </div>
     </nav>
+
+    <div class="d-flex flex-row justify-content-center">
+
+      <img src="./images/party-popper-left.svg" alt="" width="100px">
+      <h1 class="text-center my-5">Welcome to Disney App</h1>
+      <img src="./images/party-popper-right.svg" alt="" width="100px">
       
-      
-  <div class="container">
-      
-      <!-- <h1 class="text-center">Search for Disney Characters</h1> -->
-      
-      <div class="d-flex flex-row">
-        <input class="cname" type="text" id="cname" placeholder="Enter character name"/>
-        <button class="btn" id="search-btn">Search</button>
-      </div>
-      
-      
-      
-      <div class="row row-cols-1 row-cols-md-4" id="cha-card"></div>
-      
+    </div>
+  <div">
+  <div class="d-flex justify-content-between mx-5">
+    <img src="./images/mickey-mouse-left.svg" alt="" class="" width="500px" class="">
+    <div class="d-flex flex-row justify-content-center test">
+      <input class="form-control me-2" type="text" id="cname" placeholder="Enter character name" style="width: 300px; height: 75px;" id="put"/>
+      <button class="btn btn-outline-success" id="search-btn" style="width: 100px; height: 75px;" id="btn">Search</button>
+    </div>
+      <img src="./images/mickey-mouse-right.svg" alt="" class="" width="500px" class="">
+    </div>
   </div>
+  
+  
+  <div class="row row-cols-1 row-cols-md-4" id="cha-card"></div>
+  
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="./js/script.js"></script>
+  <script src="./js/script.s"></script>
 </body>
 </html>
     
