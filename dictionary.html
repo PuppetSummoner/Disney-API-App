@@ -12,29 +12,41 @@
   <!-- fontawsome -->
   <script src="https://kit.fontawesome.com/12f6c00720.js" crossorigin="anonymous"></script>
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="./css/style.css">
-  <title>Disney-API-App</title> 
+  <link rel="stylesheet" href="./css/style.css">  
+  <title>Dtset</title>
 </head>
 
 <body>
   <!-- 1. NAVBAR: START -->
-  <nav class="navbar navbar-expand-lg p-3 fs-3 bg-body-tertiary sticky-top">
+  <nav class="navbar navbar-expand-lg p-3 fs-3 bg-body-tertiary sticky-top mb-5">
     <div class="container-fluid">
       <a class="navbar-brand fs-2" href="./index.html">
         <img src="./images/Disney_logo-removebg-preview.png" alt="Disney logo" class="icon" aria-current="page" style="width: 7rem;"/>
         Finder
       </a>
+      
+      <!-- Search Bar -->
+      <div class="search-box-wrapper justify-content-center mx-auto">
+        <div class="nav-search-box">
+          <input type="text" class="nav-search-txt" name="" placeholder="Type to search" id="cname">
+          <a class="nav-search-btn" href="#" id="search-btn">
+            <img src="./images/magnifying-glass.svg" alt="" class="icon">
+          </a>
+        </div>
+      </div>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <!-- NAV-LINKS Section -->
         <ul class="navbar-nav gap-3">
           <li class="nav-item text-end">
-            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+            <a class="nav-link" href="./index.html">Home</a>
           </li>
           <li class="nav-item text-end">
-            <a class="nav-link" href="./dictionary.html">Dictionary</a>
+            <a class="nav-link active" aria-current="page" href="./dictionary.html">Dictionary</a>
           </li>
           <li class="nav-item text-end">
             <a class="nav-link" href="./detail.html">Details</a>
@@ -48,36 +60,13 @@
   </nav>
   <!-- 1. NAVBAR: END -->
 
-  <div class="d-flex flex-row justify-content-center align-items-center mt-4 mb-2">
-    <img src="./images/party-popper-left.svg" alt="" width="130rem">
-    <h1 class="text-center display-1">Welcome to Disney App</h1>
-    <img src="./images/party-popper-right.svg" alt="" width="130rem">   
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-4" id="cha-card"></div>
   </div>
 
-  <div class="overflow-hidden">
-    <div class="row row-cols-3">
-      <div class="col">
-        <img src="./images/mickey-mouse-left.svg" alt="" width="90%" class="float-end">
-      </div>
-
-      <div class="col">
-        <!-- Search bar -->
-        <div class="search-box">
-          <input type="text" class="search-txt" name=""placeholder="Search your Character!" id="cname">
-          <a class="search-btn" href="#" id="search-btn">
-             <img src="./images/magnifying-glass.svg" alt="" class="icon">
-          </a>
-        </div>
-      </div>
-
-      <div class="col">
-        <img src="./images/mickey-mouse-right.svg" alt="" width="90%" class="float-start">
-      </div>
-    </div>
-  </div>
   
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script src="./js/script.s"></script>
+  <script src="./js/script.js"></script>
 </body>
 </html>
     

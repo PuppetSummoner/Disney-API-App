@@ -1,3 +1,4 @@
+// Disney API from -> https://disneyapi.dev/
 window.addEventListener('load', refresh());
 document.getElementById("search-btn").addEventListener("click",DisneyAPI);
 
@@ -14,10 +15,33 @@ function refresh() {
             // console.log(id);
             // showDetails(character); 
             const characterCard = document.createElement("div");
-            characterCard.classList.add("card");
-            characterCard.innerHTML = `<h3>${character.name}</h3>
-                                      <img src="${character.imageUrl}" alt="${character.name}">
-                                      <button id="${id}" onClick="showDetails(id)">details</button>`;
+            // characterCard.innerHTML = `<h3>${character.name}</h3>
+            //                           <img src="${character.imageUrl}" alt="${character.name}">
+            //                           <button id="${id}" onClick="showDetails(id)">details</button>`;
+
+
+            // characterCard.innerHTML = `<div class="col">
+            //                                 <div class="card custom-card h-100">
+            //                                     <img src="${character.imageUrl}" class="card-img-top" alt="${character.name}">
+            //                                     <div class="card-body text-center">
+            //                                         <h5 class="card-title">${character.name}</h5>
+            //                                         <button class="btn btn-primary btn-detail" id="${id}" onClick="showDetails(id)">Details</button>
+            //                                     </div>   
+            //                                 </div>
+            //                             </div>`
+                                        
+            characterCard.innerHTML = `<div class="col mb-4">
+                                            <div class="custom-card">
+                                                <img src="${character.imageUrl}" class="custom-card-img" alt="${character.name}">
+                                                <div class="custom-card-body">
+                                                    <h5 class="custom-card-title">${character.name}</h5>
+                                                    <button class="custom-btn">Details</button>
+                                                </div>
+                                            </div>
+                                        </div>`
+                            
+
+            
             cardContainer.appendChild(characterCard);
         });
 
@@ -48,7 +72,6 @@ function DisneyAPI() {
                 // console.log(id);
                 // showDetails(character); 
                 const characterCard = document.createElement("div");
-                characterCard.classList.add("card");
                 // characterCard.innerHTML = `<h3>${character.name}</h3>
                 //                             <img src="${character.imageUrl}" alt="${character.name}">
                 //                             <button id="${id}" onClick="showDetails(id)">details</button>`;
@@ -61,13 +84,23 @@ function DisneyAPI() {
                 //                             </div>
                 //                            </div>`;
 
+                // characterCard.innerHTML = `<div class="col">
+                //                                 <div class="card border-0">
+                //                                     <img src="${character.imageUrl}" class="card-img-top post-image" alt="${character.name}">
+                //                                     <div class="card-body">
+                //                                         <h5 class="card-title">${character.name}</h5>
+                //                                         <button class="btn btn-primary" id="${id}" onClick="showDetails(id)">details</button>
+                //                                     </div>
+                //                                 </div>
+                //                             </div>`
+
                 characterCard.innerHTML = `<div class="col">
-                                                <div class="card border-0">
-                                                    <img src="${character.imageUrl}" class="card-img-top post-image" alt="${character.name}">
-                                                    <div class="card-body">
+                                                <div class="card custom-card h-100">
+                                                    <img src="${character.imageUrl}" class="card-img-top" alt="${character.name}">
+                                                    <div class="card-body text-center">
                                                         <h5 class="card-title">${character.name}</h5>
-                                                        <button class="btn btn-primary" id="${id}" onClick="showDetails(id)">details</button>
-                                                    </div>
+                                                        <button class="btn btn-primary btn-detail" id="${id}" onClick="showDetails(id)">Details</button>
+                                                    </div>   
                                                 </div>
                                             </div>`
                                       
