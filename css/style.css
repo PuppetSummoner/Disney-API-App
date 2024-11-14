@@ -11,7 +11,7 @@ body {
   background: white;
   border-radius: 50rem; 
   padding: 10px;
-  border: 0.3rem solid #E6E6FA;
+  border: 0.3rem solid #C3B1E1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,12 +38,13 @@ body {
   height: 5%; */
   background: white;
   border-radius: 30rem; 
-  border: 0.2rem solid #E6E6FA;
+  border: 0.2rem solid #C3B1E1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
+
 .nav-search-txt {
   border: none;
   background: none;
@@ -69,6 +70,7 @@ body {
   width: 100
 }
 
+
 /* Custom Card Styling */
 .custom-card {
   background: linear-gradient(145deg, #ffffff, #f0f0f5); /* Soft gradient background */
@@ -92,6 +94,15 @@ body {
   border-top-right-radius: 15px; /* Make the image corners match the card corners */
 }
 
+.custom-card-lg-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover; /* Crop image without stretching */
+  object-position: top;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px; /* Make the image corners match the card corners */
+}
+
 /* Card Body Styling */
 .custom-card-body {
   padding: 20px;
@@ -100,16 +111,15 @@ body {
 }
 
 .custom-card-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #333333; /* Dark grey for good readability */
+  font-size: 1.5rem;
   margin-bottom: 10px; /* Spacing between title and button */
 }
 
 /* Button Styling */
 .custom-btn {
-  background-color: #E6E6FA; /* A vibrant blue for contrast */
-  color: #ffffff;
+  background-color: #C3B1E1; /* A vibrant blue for contrast */
+  color: #FFFFFF;
+  font-size: 1.1rem;
   border: none;
   padding: 10px 20px;
   border-radius: 25px; /* Smooth button corners */
@@ -118,6 +128,25 @@ body {
 }
 
 .custom-btn:hover {
-  background-color: #357ABD; /* Darken blue on hover */
+  background-color: #957BBE; /* Darken blue on hover */
   transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+#prev-btn, #next-btn {
+  position: fixed;
+  top: 50%;  /* Vertical center */
+  transform: translateY(-50%);  /* center exactly*/
+  color: #957BBE;
+  border: none;
+  cursor: pointer;
+  font-size: 7rem;
+}
+/* prev btn position*/
+#prev-btn {
+left: 2rem;  /* left side */
+}
+
+/* next btn position*/
+#next-btn {
+right: 2rem;  /* right side */
 }

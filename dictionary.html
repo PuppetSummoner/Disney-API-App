@@ -28,8 +28,8 @@
       <!-- Search Bar -->
       <div class="search-box-wrapper justify-content-center mx-auto">
         <div class="nav-search-box">
-          <input type="text" class="nav-search-txt" name="" placeholder="Type to search" id="cname">
-          <a class="nav-search-btn" href="#" id="search-btn">
+          <input type="text" class="nav-search-txt" name="" placeholder="Type to search" autocomplete="off" id="cname2">
+          <a class="nav-search-btn" href="#" id="search-btn2">
             <img src="./images/magnifying-glass.svg" alt="" class="icon">
           </a>
         </div>
@@ -61,8 +61,15 @@
   <!-- 1. NAVBAR: END -->
 
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-4" id="cha-card"></div>
+    <div class="row row-cols-3 row-cols-md-5" id="cha-card"></div>
   </div>
+
+  <a id="prev-btn" class="" href="#">
+    <i class="fa-solid fa-caret-left"></i>
+  </a>
+  <a id="next-btn" class="" href="#">
+    <i class="fa-solid fa-caret-right"></i>
+  </a>
 
   
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
