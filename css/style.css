@@ -153,6 +153,6 @@ left: 2rem;  /* left side */
 right: 2rem;  /* right side */
 }
 
-a i {
+.icon {
   color: black;
 }
