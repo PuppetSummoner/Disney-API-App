@@ -78,6 +78,7 @@ body {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .custom-card:hover {
@@ -124,6 +125,7 @@ body {
   padding: 10px 20px;
   border-radius: 25px; /* Smooth button corners */
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -149,4 +151,8 @@ left: 2rem;  /* left side */
 /* next btn position*/
 #next-btn {
 right: 2rem;  /* right side */
+}
+
+a i {
+  color: black;
 }

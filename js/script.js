@@ -20,7 +20,7 @@ function dictionary(page = 1) {
             
                 let imageUrl;
                 if (!character.imageUrl) {
-                    imageUrl = 'https://via.placeholder.com/500?text=Sorry,+No+Image"'
+                    imageUrl = 'https://via.placeholder.com/500?text=Sorry,+No+Image'
                 }   else {
                     imageUrl = character.imageUrl
                 }
@@ -73,6 +73,14 @@ function DisneyAPI() {
                     // console.log(id);
                     // showDetails(character); 
                     const characterCard = document.createElement("div");
+
+                    let imageUrl;
+                    if (!character.imageUrl) {
+                        imageUrl = 'https://via.placeholder.com/500?text=Sorry,+No+Image'
+                    }   else {
+                        imageUrl = character.imageUrl
+                    }
+
                     characterCard.innerHTML = `<div class="col mb-4">
                                                     <div class="custom-card h-100">
                                                         <img src="${character.imageUrl}" class="custom-card-lg-img" alt="${character.name}">
