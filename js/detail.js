@@ -1,63 +1,42 @@
-// Assuming you've stored the character ID in session storage and want to use it to get the character details.
+/**
+ * Character Details Page
+ * Fetches and displays detailed information about a specific Disney character using its unique ID.
+ */
 
-// First, retrieve the character ID from session storage
+// Retrieve the stored character ID from local storage
 const characterId = localStorage.getItem('characterId');
-const cImg = document.getElementById('cImg');
-const cName = document.getElementById('cName');
-const cMovie = document.getElementById('cMovie');
-const cTv = document.getElementById('cTv');
-const cUrl = document.getElementById('cUrl');
+const cImg = document.getElementById('cImg'); // Element for character image
+const cName = document.getElementById('cName'); // Element for character name
+const cMovie = document.getElementById('cMovie'); // Element for movies
+const cTv = document.getElementById('cTv'); // Element for TV shows
+const cUrl = document.getElementById('cUrl'); // Element for source URL
 
-window.addEventListener('load', DisneyAPI(characterId));
-
-
-async function DisneyAPI(query) {
-  // console.log(`https://api.disneyapi.dev/character/${query}`)
-      const response = await fetch(`https://api.disneyapi.dev/character/${query}`);
-      const data = await response.json();
-      // console.log(data);
-      // chaName.innerHTML = "";
-      // chaImg.innerHTML = "";
-      displayData(data);
-}
-// function displayData(data) {
-//   for (var i = 0; i < data.data.length; i++) {
-//       const para = document.createElement("p"); //Create a p element to display the data
-//       para.innerHTML = `${i}: ${data.data[i].name}`; //Add the first fact to the p element
-//       const imgSrc = document.createElement("img"); //Create a p element to display the data
-//       imgSrc.src = `${data.data[i].imageUrl}`
-           
-//       card.appendChild(para); //Append the p element to the facts div on the page
-//       card.appendChild(imgSrc); //Append the p element to the facts div on the page
-//       cardContainer.appendChild(card);
-//   }
-// }
-
-// function displayData(data) {
-//   cImg.innerHTML = `<img src="${data.data.imageUrl}" alt="${data.data.imageUrl}">`;
-//   cName.innerHTML = `${data.data.name}`;
-//   cMovie.innerHTML = `${data.data.films}`;
-//   cTv.innerHTML = `${data.data.tvShows}`;
-//   cUrl.innerHTML = `<a href="${data.data.sourceUrl}" class="custom-btn" target="_blank">Go to Disney Wiki!</a>`;
-// }
-
-
-
+// Fetch and display character details when the page loads
 window.addEventListener('load', async function () {
   const characterId = localStorage.getItem('characterId');
   if (characterId) {
-      await DisneyAPI(characterId);
-      truncateContent('cMovie');
-      truncateContent('cTv');
+    await DisneyAPI(characterId);
+    truncateContent('cMovie');
+    truncateContent('cTv');
   }
 });
 
+/**
+ * DisneyAPI Function
+ * Fetches detailed information about a character using its unique ID.
+ * @param {string} query - The unique ID of the character to fetch.
+ */
 async function DisneyAPI(query) {
   const response = await fetch(`https://api.disneyapi.dev/character/${query}`);
   const data = await response.json();
-  displayData(data);
+  displayData(data); // Render the fetched data
 }
 
+/**
+ * displayData Function
+ * Populates the HTML elements with character details.
+ * @param {Object} data - The fetched character data.
+ */
 function displayData(data) {
   document.getElementById('cImg').innerHTML = `<img src="${data.data.imageUrl}" alt="${data.data.name}" class="img-fluid rounded">`;
   document.getElementById('cName').innerHTML = `${data.data.name}`;
@@ -70,34 +49,64 @@ function displayData(data) {
   document.getElementById('cUrl').innerHTML = `<a href="${data.data.sourceUrl}" class="custom-btn" target="_blank">Go to Disney Wiki!</a>`;
 }
 
+/**
+ * toggleContent Function
+ * Toggles between displaying full content and truncated content for a specified HTML element.
+ *
+ * @param {string} elementId - The ID of the content container element.
+ * @param {HTMLElement} button - The button element used to toggle content.
+ */
 function toggleContent(elementId, button) {
+  // Get the content container element by ID
   const contentElement = document.getElementById(elementId);
-  if (!contentElement) return;
+  if (!contentElement) return; // Exit if the content element does not exist
+  // Retrieve the full content from the 'data-full-content' attribute
   const fullContent = contentElement.getAttribute('data-full-content');
-  const limit = 5;
+  const limit = 5; // Limit for the number of items displayed when truncated
 
+  // Toggle logic based on the button's current text
   if (button.textContent.trim() === "View More") {
+    // Show full content
       contentElement.innerHTML = fullContent;
-      button.textContent = "View Less";
+      button.textContent = "View Less"; // Update button text
   } else {
-      const contentArray = fullContent.split(', ');
-      contentElement.innerHTML = contentArray.slice(0, limit).join(', ') + (contentArray.length > limit ? ', ...' : '');
-      button.textContent = "View More";
+    // Truncate content
+    const contentArray = fullContent.split(', '); // Split the content into an array
+    contentElement.innerHTML = contentArray.slice(0, limit).join(', ') + (contentArray.length > limit ? ', ...' : '');
+    button.textContent = "View More"; // Update button text
   }
 }
 
+/**
+ * truncateContent Function
+ * Truncates the content of a specified HTML element to a limited number of items
+ * and prepares a toggle button to display the full content if necessary.
+ *
+ * @param {string} elementId - The ID of the HTML element containing the content to be truncated.
+ */
 function truncateContent(elementId) {
+  // Get the content element by its ID
   const contentElement = document.getElementById(elementId);
-  if (!contentElement) return;
-  const fullContent = contentElement.innerHTML;
-  const contentArray = fullContent.split(', ');
-  const limit = 5;
+  if (!contentElement) return; // Exit if the content element does not exist
+   // Retrieve the full content from the element's innerHTML
+  const fullContent = contentElement.innerHTML; // Original content before truncation
+  const contentArray = fullContent.split(', '); // Split the content into an array using ", " as a delimiter
+  const limit = 5; // Maximum number of items to display when truncated
+
+   // Store the full content in the 'data-full-content' attribute for later use
   contentElement.setAttribute('data-full-content', fullContent);
+
+  // Get the associated toggle button using the elementId with "Button" appended
   const button = document.getElementById(`${elementId}Button`);
+  if (!button) return; // Exit if the toggle button does not exist
+
+  // Check if content exceeds the limit
   if (contentArray.length > limit) {
+     // If the content exceeds the limit, truncate and show the button
       contentElement.innerHTML = contentArray.slice(0, limit).join(', ') + ', ...';
-      button.style.display = 'inline';
+      button.style.display = 'inline'; // Make the button visible
   } else {
+    // If the content is within the limit, hide the button
       button.style.display = 'none';
   }
 }
