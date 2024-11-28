@@ -109,6 +109,7 @@ function DisneyAPI() {
         })
         .catch(error => {
         console.error("Error fetching character:", error);
+        alert("Could not find any data");
         });
     } else {
     alert("Please enter a character name.");
