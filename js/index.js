@@ -48,7 +48,10 @@ function DisneyAPI() {
                                             <div class="col-md-7 d-flex flex-column justify-content-center ps-3">
                                             <div class="card-body">
                                                 <h5 class="card-title fs-1">${character.name}</h5>
-                                                <button class="custom-btn btn btn-primary mt-3" id="${id}" onClick="showDetails('${id}')">Details</button>
+                                                <div class="d-flex flex-row justify-content-between">
+                                                    <button class="custom-btn" id="${id}" onClick="showDetails(id)">Details</button>
+                                                    <button class="btn like-btn" id="like-btn" data-id="${id}" data-name="${character.name}" data-image="${imageUrl}">Like!</button></button>
+                                                </div>
                                             </div>
                                             </div>
                                         </div>
@@ -62,7 +65,10 @@ function DisneyAPI() {
                                     <img src="${imageUrl}" class="custom-card-img" alt="${character.name}">
                                     <div class="custom-card-body">
                                         <h5 class="custom-card-title">${character.name}</h5>
-                                        <button class="custom-btn btn btn-primary mt-3" id="${id}" onClick="showDetails('${id}')">Details</button>
+                                        <div class="d-flex flex-row justify-content-between">
+                                            <button class="custom-btn" id="${id}" onClick="showDetails(id)">Details</button>
+                                            <button class="btn like-btn" id="like-btn" data-id="${id}" data-name="${character.name}" data-image="${imageUrl}">Like!</button></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>`;
@@ -84,14 +90,36 @@ function DisneyAPI() {
 
 /**
  * showDetails Function
- * Navigates to the details page, storing the selected character's ID in localStorage.
+ * Navigates to the details page, storing the selected character's ID in sessionStorage.
  * 
  * @param {string} id - The unique identifier of the selected character.
  */
 function showDetails(id) {
   const cid = id;
   console.log(cid); // Log the character ID
-  localStorage.clear();
-  localStorage.setItem("characterId", cid); // Store the character ID
+  sessionStorage.clear();
+  sessionStorage.setItem("characterId", cid); // Store the character ID
   window.location.href = "../detail.html"; // Navigate to the details page
 }
+
+document.addEventListener("click", (event) => {
+    if (event.target && event.target.classList.contains("like-btn")) {
+        const button = event.target;
+        const characterId = button.getAttribute("data-id");
+        console.log(characterId);
+        const characterName = button.getAttribute("data-name");
+        const characterImageUrl = button.getAttribute("data-image");
+
+        
+        let likedCharacters = JSON.parse(localStorage.getItem("likedCharacters")) || [];
+        const characterIndex = likedCharacters.findIndex(char => char.id === characterId);
+        likedCharacters.push({ id: characterId, name: characterName, imageUrl: characterImageUrl })
+        // console.log(likedCharacters);
+        
+        try {
+            localStorage.setItem("likedCharacters", JSON.stringify(likedCharacters));
+        } catch (e) {
+            console.error("Error saving to localStorage:", e);
+        }
+    }
+});

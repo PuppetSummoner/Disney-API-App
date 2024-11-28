@@ -3,8 +3,8 @@
  * Fetches and displays detailed information about a specific Disney character using its unique ID.
  */
 
-// Retrieve the stored character ID from local storage
-const characterId = localStorage.getItem('characterId');
+// Retrieve the stored character ID from session storage
+const characterId = sessionStorage.getItem('characterId');
 const cImg = document.getElementById('cImg'); // Element for character image
 const cName = document.getElementById('cName'); // Element for character name
 const cMovie = document.getElementById('cMovie'); // Element for movies
@@ -13,7 +13,7 @@ const cUrl = document.getElementById('cUrl'); // Element for source URL
 
 // Fetch and display character details when the page loads
 window.addEventListener('load', async function () {
-  const characterId = localStorage.getItem('characterId');
+  const characterId = sessionStorage.getItem('characterId');
   if (characterId) {
     await DisneyAPI(characterId);
     truncateContent('cMovie');

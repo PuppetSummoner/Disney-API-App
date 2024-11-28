@@ -13,7 +13,7 @@
   <script src="https://kit.fontawesome.com/12f6c00720.js" crossorigin="anonymous"></script>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./css/style.css">  
-  <title>Details</title>
+  <title>Contact</title>
 </head>
 <body>
 
@@ -42,6 +42,9 @@
             <a class="nav-link" href="./detail.html">Details</a>
           </li>
           <li class="nav-item text-end">
+            <a class="nav-link" href="./liked.html">Liked</a>
+          </li>
+          <li class="nav-item text-end">
             <a class="nav-link active" aria-current="page" href="#">Contact</a>
           </li>
         </ul>
@@ -57,20 +60,20 @@
   <div class="row">
     <!-- Contact Form -->
     <div class="col-md-6">
-      <form>
+      <form name="contact" onsubmit="return validateForm()">
         <div class="mb-3">
           <label for="name" class="form-label fs-2">Name</label>
-          <input type="text" class="form-control fs-5" id="name" placeholder="Enter your name" required>
+          <input type="text" class="form-control fs-5" id="name" placeholder="Enter your name">
         </div>
         <div class="mb-3">
           <label for="email" class="form-label fs-2">Email</label>
-          <input type="email" class="form-control fs-5" id="email" placeholder="Enter your email" required>
+          <input type="email" class="form-control fs-5" id="email" placeholder="Enter your email">
         </div>
         <div class="mb-3">
           <label for="message" class="form-label fs-2">Message</label>
-          <textarea class="form-control fs-5" id="message" rows="5" placeholder="Write your message" required></textarea>
+          <textarea class="form-control fs-5" id="message" rows="5" placeholder="Write your message"></textarea>
         </div>
-        <button type="submit" class="custom-btn w-100">Submit</button>
+        <button type="submit" class="custom-btn w-100" id="submit">Submit</button>
       </form>
     </div>
 

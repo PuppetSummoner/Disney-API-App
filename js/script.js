@@ -30,7 +30,10 @@ function dictionary(page = 1) {
                                                     <img src="${imageUrl}" class="custom-card-img" alt="${character.name}">
                                                     <div class="custom-card-body">
                                                         <h5 class="custom-card-title">${character.name}</h5>
-                                                        <button class="custom-btn" id="${id}" onClick="showDetails(id)">Details</button>
+                                                        <div class="d-flex flex-row justify-content-between">
+                                                            <button class="custom-btn" id="${id}" onClick="showDetails(id)">Details</button>
+                                                            <button class="btn like-btn" id="like-btn" data-id="${id}" data-name="${character.name}" data-image="${imageUrl}">Like!</button></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>`
@@ -86,7 +89,10 @@ function DisneyAPI() {
                                                         <img src="${character.imageUrl}" class="custom-card-lg-img" alt="${character.name}">
                                                         <div class="custom-card-body">
                                                             <h5 class="custom-card-title">${character.name}</h5>
+                                                            <div class="d-flex flex-row justify-content-between">
                                                             <button class="custom-btn" id="${id}" onClick="showDetails(id)">Details</button>
+                                                            <button class="btn like-btn" id="like-btn" data-id="${id}" data-name="${character.name}" data-image="${imageUrl}">Like!</button></button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>`
@@ -112,8 +118,8 @@ function DisneyAPI() {
 function showDetails(id) {
     const cid = id;
     console.log(cid);
-    localStorage.clear();
-    localStorage.setItem("characterId", cid);
+    sessionStorage.clear();
+    sessionStorage.setItem("characterId", cid);
     window.location.href = "../detail.html";
 }
 
@@ -129,16 +135,24 @@ document.getElementById('next-btn').addEventListener("click", () => {
     dictionary(currentPage);
 });
 
-// const scrolled = document.getElementById('navbar-scrolled');
-// scrolled.style.display = "none"
+document.addEventListener("click", (event) => {
+    if (event.target && event.target.classList.contains("like-btn")) {
+        const button = event.target;
+        const characterId = button.getAttribute("data-id");
+        console.log(characterId);
+        const characterName = button.getAttribute("data-name");
+        const characterImageUrl = button.getAttribute("data-image");
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     window.addEventListener('scroll', function() {
-//         if (window.scrollY > 50) {
-//             scrolled.style.display = "block"
-//         } else {
-//             scrolled.style.display = "none"
-//         }
-//     });
-    
-// });
+        
+        let likedCharacters = JSON.parse(localStorage.getItem("likedCharacters")) || [];
+        const characterIndex = likedCharacters.findIndex(char => char.id === characterId);
+        likedCharacters.push({ id: characterId, name: characterName, imageUrl: characterImageUrl })
+        // console.log(likedCharacters);
+        
+        try {
+            localStorage.setItem("likedCharacters", JSON.stringify(likedCharacters));
+        } catch (e) {
+            console.error("Error saving to localStorage:", e);
+        }
+    }
+});

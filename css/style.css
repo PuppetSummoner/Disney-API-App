@@ -156,3 +156,32 @@ right: 2rem;  /* right side */
 .icon {
   color: black;
 }
+
+/* .like-button i {
+  font-size: 2rem;
+  color: #ccc;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.like-button.liked i {
+  color: #e74c3c;
+  transform: scale(1.2);
+} */
+
+/* 공통 스타일 */
+.like-btn {
+  background-color: #ffffff;
+  font-size: 1.1rem;
+  border: 0.1rem solid;
+  padding: 10x 20px;
+  border-radius: 25px; /* Smooth button corners */
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.like-btn:hover {
+  background-color: #ff6b6b; /* Darken blue on hover */
+  color: white;
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
